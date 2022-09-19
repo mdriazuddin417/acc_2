@@ -4,6 +4,8 @@ const {
   updateTourByIdService,
   getTourByIdService,
   deleteTourByIdService,
+  getTrendingTourService,
+  getCheapestTourService,
 } = require("../service/tourService");
 
 exports.getTour = async (req, res, next) => {
@@ -84,6 +86,44 @@ exports.deleteTourById = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await deleteTourByIdService(id);
+
+    res.status(200).json({
+      success: true,
+      message: "success",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      message: "failed",
+      error: error,
+      success: false,
+    });
+  }
+};
+
+//==========Trending Tour==============//
+exports.getTrendingTour = async (req, res, next) => {
+  try {
+    const result = await getTrendingTourService();
+
+    res.status(200).json({
+      success: true,
+      message: "success",
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      message: "failed",
+      error: error,
+      success: false,
+    });
+  }
+};
+
+//==========Cheapest Tour==============//
+exports.getCheapestTour = async (req, res, next) => {
+  try {
+    const result = await getCheapestTourService();
 
     res.status(200).json({
       success: true,

@@ -15,6 +15,9 @@ GET /tours/:id
 Get a tour details by id
 Send all the information of the tour
 Increase the view count by 1 for this tour every time a user hits this endpoint.
+
+
+
 PATCH /tour/:id
 Update a tour
 (BONUS) Body should be validated
