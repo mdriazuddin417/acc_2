@@ -4,6 +4,7 @@ const tourSchema = new mongoose.Schema(
   {
     name: {
       type: String,
+      unique: true,
       required: [true, "Please provide a name for this tour"],
       minLength: [3, "At least provide a 3 character"],
       maxLength: [150, "150 character maximum allow"],
@@ -14,7 +15,7 @@ const tourSchema = new mongoose.Schema(
     },
     descriptions: {
       type: String,
-      required: true,
+      required: [true, "please provide a valid descriptions"],
     },
     price: {
       type: Number,

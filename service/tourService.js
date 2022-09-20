@@ -10,17 +10,18 @@ exports.getTourService = async (queries) => {
   return { total, result };
 };
 
-exports.getTourByIdService = async (id) => {
-  const result = await Tour.find({ _id: id });
-  const increaseView = await Tour.updateOne({ _id: id }, { $inc: { view: 1 } });
-  return result;
-};
-
 exports.createTourService = async (data) => {
   const result = await Tour.create(data);
   return result;
 };
 
+exports.getTourByIdService = async (id) => {
+  const result = await Tour.findById(id);
+
+  const increaseView = await Tour.updateOne({ _id: id }, { $inc: { view: 1 } });
+
+  return result;
+};
 exports.updateTourByIdService = async (id, data) => {
   const result = await Tour.updateOne(
     { _id: id },
@@ -32,6 +33,7 @@ exports.updateTourByIdService = async (id, data) => {
 
 exports.deleteTourByIdService = async (id) => {
   const result = await Tour.deleteOne({ _id: id });
+
   return result;
 };
 
