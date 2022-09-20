@@ -3,13 +3,13 @@ const tourController = require("../../controllers/tourController");
 
 const router = express.Router();
 
+router.route("/tour/trending").get(tourController.getTrendingTour);
+router.route("/tour/cheapest").get(tourController.getCheapestTour);
+
 router
   .route("/tours")
   .get(tourController.getTour)
   .post(tourController.createTour);
-
-router.route("/tour/trending").get(tourController.getTrendingTour);
-router.route("/tour/cheapest").get(tourController.getCheapestTour);
 
 router
   .route("/tour/:id")
