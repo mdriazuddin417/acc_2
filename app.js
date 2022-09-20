@@ -9,10 +9,13 @@ app.use(cors());
 
 //Route
 
-app.use("/api/v1/tours", tourRouter);
+app.use("/api/v1", tourRouter);
 
 app.get("/", (req, res) => {
   res.send("Acc Assignment Test Default Api");
+});
+app.get("*", (req, res) => {
+  res.send("Not Found Page");
 });
 
 module.exports = app;

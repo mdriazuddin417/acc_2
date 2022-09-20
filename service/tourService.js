@@ -1,13 +1,18 @@
 const Tour = require("../model/Tour");
 
-exports.getTourService = async () => {
-  const result = await Tour.find({});
+exports.getTourService = async (queries) => {
+  const result = await Tour.find({})
+    .select(queries.fields)
+    .sort(queries.sortBy)
+    .limit(queries.limit)
+    .skip(queries.skip);
   const total = await Tour.count();
   return { total, result };
 };
 
 exports.getTourByIdService = async (id) => {
   const result = await Tour.find({ _id: id });
+  const increaseView = await Tour.updateOne({ _id: id }, { $inc: { view: 1 } });
   return result;
 };
 
