@@ -17,7 +17,6 @@ exports.createTourService = async (data) => {
 
 exports.getTourByIdService = async (id) => {
   const result = await Tour.findById(id);
-
   const increaseView = await Tour.updateOne({ _id: id }, { $inc: { view: 1 } });
 
   return result;
@@ -33,7 +32,7 @@ exports.updateTourByIdService = async (id, data) => {
 
 exports.deleteTourByIdService = async (id) => {
   const result = await Tour.deleteOne({ _id: id });
-
+  console.log(id);
   return result;
 };
 
