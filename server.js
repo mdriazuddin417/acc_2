@@ -4,7 +4,7 @@ const express = require("express");
 const port = process.env.PORT || 8081;
 
 mongoose
-  .connect(process.env.MONGODB_LOCAL_DATABASE)
+  .connect(process.env.MONGODB_DATABASE)
   .then(() => {
     console.log("Mongoose Database connected");
   })
